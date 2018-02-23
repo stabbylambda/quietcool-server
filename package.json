@@ -1,0 +1,44 @@
+{
+  "name": "quietcool-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "nodemon",
+    "format": "prettier --write src/*"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/koa": "^2.0.44",
+    "@types/koa-router": "^7.0.27",
+    "dotenv": "^5.0.0",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-bunyan-logger": "^2.0.0",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.5",
+    "micro": "^9.1.0",
+    "nodemon": "^1.15.1",
+    "quietcool": "^1.1.0",
+    "rxjs": "^5.5.6"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^4.0.2",
+    "prettier": "^1.10.2",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.7.2"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "src/**/*.spec.ts"
+    ],
+    "exec": "ts-node ./src/index.ts"
+  }
+}
