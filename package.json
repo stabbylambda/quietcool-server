@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon",
-    "format": "prettier --write src/*"
+    "format": "prettier --write src/*",
+    "precommit": "lint-staged"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -27,18 +28,19 @@
   },
   "devDependencies": {
     "@types/dotenv": "^4.0.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
     "prettier": "^1.10.2",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.2"
   },
   "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
+    "watch": ["src"],
     "ext": "ts",
-    "ignore": [
-      "src/**/*.spec.ts"
-    ],
+    "ignore": ["src/**/*.spec.ts"],
     "exec": "ts-node ./src/index.ts"
+  },
+  "lint-staged": {
+    "*.{ts,js,json,css,md}": ["prettier --write", "git add"]
   }
 }
