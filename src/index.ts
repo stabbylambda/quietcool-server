@@ -23,8 +23,7 @@ router.get('/fans/:ip', async (ctx) => {
 });
 
 const getId = (ctx) => {
-    let ip = ctx.params.ip;
-    let uid = ctx.params.uid;
+    let {ip, uid} = ctx.params;
     return {ip, uid};
 }
 
@@ -42,7 +41,7 @@ router.post('/fans/:ip/:uid/off', async (ctx) => {
 
 router.post('/fans/:ip/:uid/setCurrentSpeed', async (ctx) => {
     let id = getId(ctx);
-    let speed = ctx.request.body.speed;
+    let {speed} = ctx.request.body;
 
     let response = await fanControl.setCurrentSpeed(id, speed).toPromise();
     ctx.body = response;
@@ -50,7 +49,7 @@ router.post('/fans/:ip/:uid/setCurrentSpeed', async (ctx) => {
 
 router.post('/fans/:ip/:uid/updateSpeeds', async (ctx) => {
     let id = getId(ctx);
-    let speeds = ctx.request.body.speeds;
+    let {speeds} = ctx.request.body;
 
     let response = await fanControl.updateFanSpeeds(id, speeds).toPromise();
     ctx.body = response;
