@@ -30,15 +30,11 @@ const getId = ctx => {
   return { ip, uid };
 };
 
-router.post("/fans/:ip/:uid/on", async ctx => {
+router.post("/fans/:ip/:uid/power", async ctx => {
   let id = getId(ctx);
-  let response = await fanControl.turnFanOn(id).toPromise();
-  ctx.body = response;
-});
+  let { on } = (<any>ctx.request).body;
 
-router.post("/fans/:ip/:uid/off", async ctx => {
-  let id = getId(ctx);
-  let response = await fanControl.turnFanOff(id).toPromise();
+  let response = await fanControl.power(id, on).toPromise();
   ctx.body = response;
 });
 
